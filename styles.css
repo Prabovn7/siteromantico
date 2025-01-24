@@ -1,0 +1,93 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9e3e3;
+    color: #333;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Partículas de corações */
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+header {
+    background-color: #ffb6c1;
+    padding: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h1 {
+    color: #fff;
+    font-size: 2.5em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.slider {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    max-width: 100%;
+}
+
+.slider-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover; /* Ajuste automático da imagem */
+    opacity: 0;
+    transition: opacity 1s ease;
+    will-change: transform, opacity;
+}
+
+.slider-img.active {
+    opacity: 1;
+    transform: scale(1.1) rotate(0deg);
+    transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+/* Notificação - balão de nova mensagem */
+.notification-balloon {
+    background-color: #ff66b2;
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.notification-balloon:hover {
+    transform: scale(1.1);
+    background-color: #ff4c8b;
+}
+
+footer {
+    background-color: #ffb6c1;
+    padding: 20px;
+    margin-top: 50px;
+    font-size: 0.8em;
+    color: #fff;
+}
+
+/* Classe para esconder elementos */
+.hidden {
+    display: none;
+}
