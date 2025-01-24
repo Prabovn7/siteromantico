@@ -14,22 +14,25 @@ body {
     overflow: hidden;
 }
 
-/* Partículas de corações */
+/* Partículas de corações - Transparência e no fundo */
 #particles-js {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
-    background-color: rgba(255, 255, 255, 0.7);
+    z-index: -1; /* Partículas no fundo */
+    background-color: rgba(255, 255, 255, 0.1); /* Partículas com transparência leve */
 }
 
+/* Header */
 header {
     background-color: #ffb6c1;
     padding: 20px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    z-index: 1;
+    position: relative;
 }
 
 h1 {
@@ -38,11 +41,13 @@ h1 {
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Slider de Imagens - Garantindo que as imagens fiquem no primeiro plano */
 .slider {
     display: flex;
     overflow: hidden;
     position: relative;
     max-width: 100%;
+    z-index: 2; /* Imagens acima das partículas */
 }
 
 .slider-img {
@@ -52,6 +57,7 @@ h1 {
     opacity: 0;
     transition: opacity 1s ease;
     will-change: transform, opacity;
+    z-index: 3; /* Imagens no topo */
 }
 
 .slider-img.active {
@@ -72,6 +78,7 @@ h1 {
     cursor: pointer;
     font-size: 1.2em;
     transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 4; /* Notificação no topo */
 }
 
 .notification-balloon:hover {
