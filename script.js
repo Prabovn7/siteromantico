@@ -6,7 +6,7 @@ window.onload = () => {
     music.play();
 };
 
-// Partículas com Particles.js - Corações
+// Partículas com Particles.js - Corações com transparência
 particlesJS('particles-js', {
     "particles": {
         "number": {
@@ -14,13 +14,11 @@ particlesJS('particles-js', {
         },
         "shape": {
             "type": "image",
-            "image": [
-                {
-                    "src": "imagens/coracao.png",
-                    "width": 30,
-                    "height": 30
-                }
-            ]
+            "image": [{
+                "src": "imagens/coração.png",  // Altere se necessário
+                "width": 30,
+                "height": 30
+            }]
         },
         "size": {
             "value": 15
@@ -34,6 +32,9 @@ particlesJS('particles-js', {
         "line_linked": {
             "enable": true,
             "opacity": 0.1
+        },
+        "opacity": {
+            "value": 0.2 // Leve transparência para as partículas
         }
     }
 });
