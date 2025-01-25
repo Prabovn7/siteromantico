@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta para Meu Amor</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Estilo das partículas */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0; /* Atrás de tudo */
+        }
+
+        .particle {
+            position: absolute;
+            background-image: url('heart.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.8;
+            animation: moveParticles 10s infinite;
+        }
+
+        @keyframes moveParticles {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(400px) translateX(200px);
+                opacity: 0;
+            }
+        }
+
+        #music-controls {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            z-index: 999;
+        }
+
+        #music-controls button {
+            margin-left: 10px;
+            background-color: #f07aa0;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            perspective: 1000px;
+            z-index: 1; /* Para aparecer acima das partículas */
+        }
+
+        .card {
+            position: absolute;
+            width: 90%;
+            max-width: 400px;
+            height: 60%;
+            max-height: 600px;
+            border-radius: 20px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.6s ease, box-shadow 0.4s ease;
+        }
+
+        .card.inactive {
+            transform: rotateY(-90deg) translateX(-100%);
+        }
+
+        .card.active {
+            transform: rotateY(0deg);
+        }
+
+        .card.swiped {
+            transform: rotateY(90deg) translateX(100%);
+            opacity: 0;
+        }
+
+        .card:hover {
+            transform: scale(1.05) rotateY(0);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .end-paper {
+            position: fixed;
+            bottom: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 85%;
+            max-width: 600px;
+            max-height: 80%;
+            background: #fff5e6;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: left;
+            overflow-y: auto;
+            color: #444;
+            transition: bottom 1.5s ease-in-out;
+            z-index: 1; /* Acima das cartas */
+        }
+
+        .end-paper h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .end-paper p {
+            margin-bottom: 10px;
+        }
+
+        .end-paper.open {
+            bottom: 10%;
+        }
+
+        .end-paper .fold-button {
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            width: 50px;
+            height: 50px;
+            background: #f07aa0;
+            clip-path: polygon(0 0, 100% 0, 0 100%);
+            cursor: pointer;
+            z-index: 999;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                width: 95%;
+                height: 70%;
+            }
+
+            .end-paper {
+                max-height: 75%;
+                font-size: 14px;
+            }
+
+            .end-paper h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<audio id="background-music" src="musica.mp3" autoplay loop></audio>
+<div id="music-controls">
+    🎵 Tocando música 
+    <button id="mute-toggle">Pausar</button>
+</div>
+
+<div class="particles" id="particles"></div>
+
+<div class="card-container">
+    <div class="card active" style="background-image: url('img1.jpg');"></div>
+    <div class="card inactive" style="background-image: url('img2.jpg');"></div>
+    <div class="card inactive" style="background-image: url('img3.jpg');"></div>
+    <div class="card inactive" style="background-image: url('img4.jpg');"></div>
+    <div class="card inactive" style="background-image: url('img5.jpg');"></div>
+</div>
+
+<div class="end-paper">
+    <div class="fold-button"></div>
+    <h1>Olá meu bem, </h1>
+    <p>venho dessa mesma forma expressar parte do amor que eu sinto por você, quero primeiramente agradecer a Deus por ter te colocado em minha vida...</p>
+    <p>E também, agradecer a você por me aturar todos os dias, me entender, me dar o seu amor (que às vezes me questiono se eu realmente mereço), mas também agradecer pela paciência, por me fazer sentir todo esse sentimento que às vezes é difícil explicar...</p>
+    <p>Você não tem ideia da saudade que eu tô sentindo de você, eu tento não te apavorar com isso, afinal, eu tenho tanta pressa para a gente viver o nosso namoro do jeito certo...</p>
+    <p>Me dói não te ver, me dói a gente não poder sair e viver essas breguices de casal, mas também sei que quando vivermos tudo isso, vai ser maravilhoso...</p>
+    <p>Assim como cada curto momento que eu passei com você, foram espetaculares, do tamanho do espetáculo que você é...</p>
+    <p>E agora eu peço desculpas, porque eu sei que sou extremamente chato, e difícil de lidar, não sei nem como você consegue me amar às vezes...</p>
+    <p>Mas da mesma forma, eu te agradeço por me aturar, e entender tudo isso...</p>
+    <p>Eu sei que posso confiar em ti o meu amor, e da mesma forma como diz na nossa música, "Eu só sei que a vida é mais colorida com você..."</p>
+    <p>Eu te amo meu bem, muito muito.</p>
+    <p>Com muito amor, <strong>Pablo.</strong></p>
+</div>
+
+<script>
+    // Gerar partículas de coração
+    function createParticles() {
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            const size = Math.random() * 20 + 15;  // Defina o tamanho das partículas
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particlesContainer.appendChild(particle);
+        }
+    }
+    createParticles();
+
+    const cards = document.querySelectorAll('.card');
+    const endPaper = document.querySelector('.end-paper');
+    const foldButton = document.querySelector('.fold-button');
+    const music = document.getElementById('background-music');
+    const muteToggle = document.getElementById('mute-toggle');
+
+    let currentCardIndex = 0;
+
+    function showNextCard() {
+        if (currentCardIndex < cards.length - 1) {
+            cards[currentCardIndex].classList.remove('active');
+            cards[currentCardIndex].classList.add('swiped');
+            currentCardIndex++;
+            cards[currentCardIndex].classList.remove('inactive');
+            cards[currentCardIndex].classList.add('active');
+        } else {
+            showEndPaper();
+        }
+    }
+
+    cards.forEach((card) => {
+        card.addEventListener('click', showNextCard);
+    });
+
+    function showEndPaper() {
+        endPaper.classList.add('open');
+    }
+
+    foldButton.addEventListener('click', () => {
+        cards.forEach((card) => {
+            card.classList.remove('swiped');
+            card.classList.remove('active');
+            card.classList.add('inactive');
+        });
+        cards[0].classList.remove('inactive');
+        cards[0].classList.add('active');
+        currentCardIndex = 0;
+        endPaper.classList.remove('open');
+    });
+
+    muteToggle.addEventListener('click', () => {
+        if (music.paused) {
+            music.play();
+            muteToggle.textContent = 'Pausar';
+        } else {
+            music.pause();
+            muteToggle.textContent = 'Tocar';
+        }
+    });
+
+    // Toca automaticamente ao carregar (em dispositivos que permitem autoplay com áudio ativado)
+    music.play().catch(() => console.log('O navegador bloqueou o autoplay.'));
+</script>
+
+</body>
+</html>
